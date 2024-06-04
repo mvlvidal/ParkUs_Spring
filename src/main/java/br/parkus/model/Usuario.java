@@ -9,14 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -24,23 +23,20 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=true)
 @Entity
-public class Usuario extends AbstractModel<Long> implements UserDetails{
+@Table(name = "usuario")
+public class Usuario extends AbstractModel implements UserDetails{
 
 	private static final long serialVersionUID = 2595451538897521341L;
 
-	@Id
 	@Column(nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column
 	private String login;
 	
-	@Column
+	@Column(nullable = false)
 	private String senha;
 	
-	@Column
+	@Column(nullable = false)
 	private String nome;
 	
 	@ManyToMany(fetch = FetchType.EAGER)

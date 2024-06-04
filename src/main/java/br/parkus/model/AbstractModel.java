@@ -19,7 +19,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public abstract class AbstractModel<I> implements Serializable{
+public abstract class AbstractModel implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
